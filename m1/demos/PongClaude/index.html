@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego de Pong</title>
+    <style>
+        /* Estilos básicos para el juego */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #game-container {
+            text-align: center;
+        }
+
+        #pong-canvas {
+            background-color: black;
+            border: 4px solid #333;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        #score {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #instructions {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="score">Jugador de la Izquierda: 0 | Jugador de la Derecha: 0</div>
+        <canvas id="pong-canvas" width="800" height="400"></canvas>
+        <div id="instructions">
+            Jugador Izquierdo: Teclas de Cursor ↑/↓ 
+            | Jugador Derecho: Teclas A/Z
+        </div>
+    </div>
+
+    <script>
+        // Obtener el contexto del canvas
+        const canvas = document.getElementById('pong-canvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+
+        // Configuraciones del juego
+        const PADDLE_WIDTH = 10;
+        const PADDLE_HEIGHT = 100;
+        const BALL_RADIUS = 10;
+
+        // Estados de los jugadores y la pelota
+        const player1 = {
+            x: 10,
+            y: canvas.height / 2 - PADDLE_HEIGHT / 2,
+            score: 0,
+            speed: 10
+        };
+
+        const player2 = {
+            x: canvas.width - 20,
+            y: canvas.height / 2 - PADDLE_HEIGHT / 2,
+            score: 0,
+            speed: 10
+        };
+
+        const ball = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            dx: 5,
+            dy: 5,
+            speed: 5
+        };
+
+        // Función para dibujar las paletas
+        function drawPaddles() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(player1.x, player1.y, PADDLE_WIDTH, PADDLE_HEIGHT);
+            ctx.fillRect(player2.x, player2.y, PADDLE_WIDTH, PADDLE_HEIGHT);
+        }
+
+        // Función para dibujar la pelota
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, BALL_RADIUS, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Función para mover la pelota
+        function moveBall() {
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            // Rebote en bordes superior e inferior
+            if (ball.y - BALL_RADIUS < 0 || ball.y + BALL_RADIUS > canvas.height) {
+                ball.dy = -ball.dy;
+            }
+
+            // Colisión con paletas
+            if (
+                (ball.x - BALL_RADIUS < player1.x + PADDLE_WIDTH && 
+                 ball.y > player1.y && 
+                 ball.y < player1.y + PADDLE_HEIGHT) ||
+                (ball.x + BALL_RADIUS > player2.x && 
+                 ball.y > player2.y && 
+                 ball.y < player2.y + PADDLE_HEIGHT)
+            ) {
+                ball.dx = -ball.dx;
+            }
+
+            // Puntuación
+            if (ball.x < 0) {
+                player2.score++;
+                resetBall();
+            }
+            if (ball.x > canvas.width) {
+                player1.score++;
+                resetBall();
+            }
+        }
+
+        // Restablecer la pelota al centro
+        function resetBall() {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.dx = Math.random() > 0.5 ? 5 : -5;
+            ball.dy = Math.random() > 0.5 ? 5 : -5;
+            updateScoreDisplay();
+        }
+
+        // Actualizar marcador
+        function updateScoreDisplay() {
+            scoreDisplay.textContent = `Jugador de la Izquierda: ${player1.score} | Jugador de la Derecha: ${player2.score}`;
+        }
+
+        // Limpiar el canvas
+        function clear() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Bucle principal del juego
+        function gameLoop() {
+            clear();
+            drawPaddles();
+            drawBall();
+            moveBall();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Manejar movimientos de jugadores
+        document.addEventListener('keydown', (e) => {
+            // Jugador 1 (Teclas de cursor)
+            if (e.key === 'ArrowUp' && player1.y > 0) {
+                player1.y -= player1.speed;
+            }
+            if (e.key === 'ArrowDown' && player1.y < canvas.height - PADDLE_HEIGHT) {
+                player1.y += player1.speed;
+            }
+
+            // Jugador 2 (Teclas A/Z)
+            if (e.key === 'a' && player2.y > 0) {
+                player2.y -= player2.speed;
+            }
+            if (e.key === 'z' && player2.y < canvas.height - PADDLE_HEIGHT) {
+                player2.y += player2.speed;
+            }
+        });
+
+        // Iniciar el juego
+        gameLoop();
+    </script>
+</body>
+</html>

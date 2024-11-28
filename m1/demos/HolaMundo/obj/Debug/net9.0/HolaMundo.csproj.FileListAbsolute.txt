@@ -1,0 +1,14 @@
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\bin\Debug\net9.0\HolaMundo.exe
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\bin\Debug\net9.0\HolaMundo.deps.json
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\bin\Debug\net9.0\HolaMundo.runtimeconfig.json
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\bin\Debug\net9.0\HolaMundo.dll
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\bin\Debug\net9.0\HolaMundo.pdb
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\HolaMundo.GeneratedMSBuildEditorConfig.editorconfig
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\HolaMundo.AssemblyInfoInputs.cache
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\HolaMundo.AssemblyInfo.cs
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\HolaMundo.csproj.CoreCompileInputs.cache
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\HolaMundo.dll
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\refint\HolaMundo.dll
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\HolaMundo.pdb
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\HolaMundo.genruntimeconfig.cache
+C:\EducacionIT\programacion_orientada_a_objetos_con_ia\m1\demos\HolaMundo\obj\Debug\net9.0\ref\HolaMundo.dll

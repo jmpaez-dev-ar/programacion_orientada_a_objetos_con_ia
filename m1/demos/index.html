@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo Personalizado</title>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    <p id="mensaje">Por favor, ingresa tu nombre:</p>
+    <input type="text" id="nombre" placeholder="Tu nombre">
+    <button onclick="saludar()">Saludar</button>
+    <p id="saludo"></p>
+
+    <script>
+        function saludar() {
+            // Obtiene el nombre ingresado por el usuario
+            const nombre = document.getElementById("nombre").value;
+
+            // Muestra el saludo en la página
+            const mensajeSaludo = nombre
+                ? `¡Hola, ${nombre}!`
+                : "Por favor, escribe tu nombre.";
+            document.getElementById("saludo").textContent = mensajeSaludo;
+        }
+    </script>
+</body>
+</html>

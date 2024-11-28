@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pong</title>
+  <style>
+    /* Estilos CSS para el juego */
+    canvas {
+      background-color: #000;
+      border: 1px solid white;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="800" height="600"></canvas>
+  <script>
+    // Obtener el elemento canvas y su contexto 2D
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Variables para el juego
+    const ballRadius = 10;
+    let x = canvas.width/2;
+    let y = canvas.height-30;
+    let dx = 2;
+    let dy = -2;
+    const paddleHeight = 10;
+    const paddleWidth = 75;
+    let paddleX = (canvas.width-paddleWidth)/2;
+    let rightPaddleX = (canvas.width-paddleWidth)/2;
+    let score = 0;
+    let rightScore = 0;
+
+    // Dibujar la pelota
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    // Dibujar las paletas
+    function drawPaddle() {
+      ctx.beginPath();
+      ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.rect(rightPaddleX, 0, paddleWidth, paddleHeight);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    // Dibujar el marcador
+    function drawScore() {
+      ctx.font = "16px Arial";
+      ctx.fillStyle = "#0095DD";
+      ctx.fillText("Jugador 1: " + score, 8, 20);
+      ctx.fillText("Jugador 2: " + rightScore, canvas.width-100, 20);
+    }
+
+    // Dibujar la cancha
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBall();
+      drawPaddle();
+      drawScore();
+
+      // Rebotar la pelota en las paredes
+      if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+      }
+      if(y + dy < ballRadius) {
+        dy = -dy;
+      } else if(y + dy > canvas.height-ballRadius) {
+        if(x > paddleX && x < paddleX + paddleWidth) {
+          dy = -dy;
+        } else if(x > rightPaddleX && x < rightPaddleX + paddleWidth) {
+          dy = -dy;
+        } else {
+          // Punto para el jugador 2
+          rightScore++;
+          resetBall();
+        }
+      }
+
+      x += dx;
+      y += dy;
+    }
+
+    // Reiniciar la pelota
+    function resetBall() {
+      x = canvas.width/2;
+      y = canvas.height-30;
+      dx = -dx;
+      dy = -dy;
+    }
+
+    // Manejar los eventos del teclado
+    document.addEventListener("keydown", keyDownHandler, false);
+    function keyDownHandler(e) {
+      if(e.key == "Right" || e.key == "ArrowRight") {
+        paddleX += 20;
+        if (paddleX + paddleWidth > canvas.width) {
+          paddleX = canvas.width - paddleWidth;
+        }
+      }
+      else if(e.key == "Left" || e.key == "ArrowLeft") {
+        paddleX -= 20;
+        if (paddleX < 0) {
+          paddleX = 0;
+        }
+      }
+
+      if(e.key == "a") {
+        rightPaddleX -= 20;
+        if (rightPaddleX < 0) {
+          rightPaddleX = 0;
+        }
+      }
+      else if(e.key == "z") {
+        rightPaddleX += 20;
+        if (rightPaddleX + paddleWidth > canvas.width) {
+          rightPaddleX = canvas.width - paddleWidth;
+        }
+      }
+    }
+
+    // Bucle de juego
+    setInterval(draw, 10);
+  </script>
+</body>
+</html>
