@@ -1,0 +1,7 @@
+¿Podrías programar, en JAVA, la clase Personaje que tiene nombre, defensa, poder y salud? Mostrar, directamente, el código de la clase.
+
+¿Podrías programar, en C#, la clase Personaje que tiene nombre, defensa, poder y salud? Mostrar directamente el código de la clase.
+
+¿Podrías programar, en JavaScript, la clase Personaje que tiene nombre, defensa, poder y salud? Mostrar directamente el código de la clase.
+
+¿Podrías programar, en Python, la clase Personaje que tiene nombre, defensa, poder y salud? Mostrar, directamente, el código de la clase.

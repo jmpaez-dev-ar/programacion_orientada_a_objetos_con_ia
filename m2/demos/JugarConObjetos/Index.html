@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Definimos el objeto Superman
+      const superman = {
+        name: "Superman",
+        strength: 100,
+        defense: 90,
+        health: 500,
+        attack: function (opponent) {
+          const damage = this.strength - opponent.defense / 2;
+          opponent.health -= damage;
+          console.log(
+            `${this.name} ataca a ${opponent.name} causando ${damage.toFixed(
+              2
+            )} de daño.`
+          );
+          console.log(
+            `${opponent.name} tiene ${opponent.health.toFixed(
+              2
+            )} de salud restante.`
+          );
+        },
+        status: function () {
+          console.log(
+            `${this.name}: Salud: ${this.health.toFixed(2)}, Fuerza: ${
+              this.strength
+            }`
+          );
+        },
+      };
+
+      // Definimos el objeto Omni-Man
+      const omniMan = {
+        name: "Omni-Man",
+        strength: 110,
+        defense: 85,
+        health: 500,
+        attack: function (opponent) {
+          const damage = this.strength - opponent.defense / 2;
+          opponent.health -= damage;
+          console.log(
+            `${this.name} ataca a ${opponent.name} causando ${damage.toFixed(
+              2
+            )} de daño.`
+          );
+          console.log(
+            `${opponent.name} tiene ${opponent.health.toFixed(
+              2
+            )} de salud restante.`
+          );
+        },
+        status: function () {
+          console.log(
+            `${this.name}: Salud: ${this.health.toFixed(2)}, Fuerza: ${
+              this.strength
+            }`
+          );
+        },
+      };
+
+      console.log("Estado inicial:");
+      superman.status();
+      omniMan.status();
+
+      console.log("\n¡Comienza la batalla!");
+      superman.attack(omniMan); // Superman ataca a Omni-Man
+      omniMan.attack(superman); // Omni-Man ataca a Superman
+
+      console.log("\nEstado final:");
+      superman.status();
+      omniMan.status();
+    </script>
+  </body>
+</html>

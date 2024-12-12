@@ -1,0 +1,61 @@
+classDiagram
+    Fintech --> Cliente : gestiona
+    Fintech --> Cuenta : administra
+    Cuenta --> Movimiento : contiene
+    Cuenta --> Cliente : pertenece a
+
+    class Fintech {
+        - Map clientes
+        - Map cuentas
+        - int clienteIdCounter
+        - int cuentaCodigoCounter
+        + crearCliente(nombre, apellido, dni, email, password, confirmPassword) Cliente
+        + obtenerClientePorId(clienteId) Cliente
+        + login(email, password) Cliente
+        + crearCuenta(clienteId, saldoInicial) Cuenta
+        + obtenerCuentaPorCodigo(codigoCuenta) Cuenta
+        + depositar(codigoCuenta, monto, motivo)
+        + retirar(codigoCuenta, monto, motivo)
+        + transferir(codigoCuentaOrigen, codigoCuentaDestino, monto, motivo)
+        + consultarSaldo(codigoCuenta) Number
+        + obtenerMovimientos(codigoCuenta) Movimiento[]
+    }
+
+    class Cliente {
+        - String id
+        - String nombre
+        - String apellido
+        - String dni
+        - String email
+        - String password
+        + verificarPassword(password) Boolean
+        + getNombre() String
+        + getApellido() String
+        + getDNI() String
+        + getEmail() String
+        + cambiarPassword(newPassword, confirmPassword)
+    }
+
+    class Cuenta {
+        - String codigo
+        - Cliente cliente
+        - Number saldo
+        - Movimiento[] movimientos
+        + depositar(monto, motivo)
+        + retirar(monto, motivo)
+        + transferir(monto, cuentaDestino, motivo)
+        + consultarSaldo() Number
+        + getMovimientos() Movimiento[]
+    }
+
+    class Movimiento {
+        - String tipo
+        - Number monto
+        - Date fecha
+        - String motivo
+        + getTipo() String
+        + getMonto() Number
+        + getFecha() Date
+        + getMotivo() String
+        + resumenMovimiento() String
+    }
