@@ -15,6 +15,9 @@ class Personaje {
   }
   
   // Ejemplo de uso:
-  const heroe = new Personaje("Arthas", 50, 70, 100);
-  heroe.mostrarInformacion();
+  const superman = new Personaje("Superman", 50, 70, 100);
+  superman.mostrarInformacion();
+  
+  const ironMan = new Personaje("IronMan", 80, 90, 100);
+  ironMan.mostrarInformacion();
   
