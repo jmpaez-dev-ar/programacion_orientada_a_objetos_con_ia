@@ -1,0 +1,73 @@
+🔹 Etapa 1: Análisis del Problema y Estrategia de Resolución
+
+Objetivo: Comprender el enunciado general del sistema, planificar su resolución y definir los componentes iniciales.
+
+Prompts:
+
+Explícame el enunciado de este sistema para una fintech, identificando los actores, funcionalidades principales y relaciones clave entre ellos.
+
+Proporciona una estrategia de resolución para desarrollar este sistema de forma modular y basada en Programación Orientada a Objetos.
+
+Divide el desarrollo del sistema en etapas lógicas, detallando qué se espera lograr en cada una.
+
+Genera un modelo conceptual en texto que incluya las entidades principales, sus atributos y relaciones.
+
+Elabora un diagrama de clases UML preliminar para representar las entidades identificadas.
+
+
+
+🔹 Etapa 2: Desarrollo de la Clase Cliente y Pruebas Unitarias
+
+Objetivo: Crear la clase Cliente con validaciones y encapsulamiento, y desarrollar pruebas unitarias.
+
+Prompts:
+
+Genera una clase Cliente en JavaScript con los siguientes atributos: id, nombre, email, password y confirmPassword. Aplica encapsulamiento y validaciones.
+
+Incluye en la clase Cliente los getters y setters adecuados, con validación de cada campo.
+
+Agrega un método para actualizar la contraseña, validando que ambas coincidan.
+
+Crea una batería de pruebas unitarias usando Jest para verificar la creación, modificación y validación de clientes.
+
+Genera un diagrama UML para representar visualmente la clase Cliente y sus operaciones.
+
+
+
+🔹 Etapa 3: Modelado del Sistema y Relaciones entre Clases
+
+Objetivo: Desarrollar el modelo de negocio completo incluyendo las clases Cuenta y Movimiento, junto con sus relaciones y lógica de negocio.
+
+Prompts:
+
+Diseña la clase Cuenta con atributos: código, saldo, cliente (referencia) y una lista de movimientos. Agrega métodos para depositar, retirar, consultarSaldo y registrarMovimiento.
+
+Diseña la clase Movimiento con tipo (Depósito o Retiro), monto, fecha y motivo. Aplica validaciones para cada atributo.
+
+Agrega a la clase Fintech los métodos para registrar usuarios, agregar cuentas y hacer transferencias entre cuentas.
+
+Desarrolla pruebas unitarias que simulen escenarios completos: alta de usuarios, login, ingreso de dinero y transferencia.
+
+Genera un diagrama UML actualizado que integre Cliente, Cuenta, Movimiento y Fintech, mostrando sus relaciones.
+
+
+
+🔹 Etapa 4: Desarrollo del Frontend y Componentes Interactivos
+
+Objetivo: Implementar el frontend en HTML + JavaScript, incluyendo componentes y ruteo.
+
+Prompts:
+
+Genera una clase Router en JavaScript para gestionar la navegación entre componentes, recibiendo el parent HTML, el modelo y un método navigateTo().
+
+Desarrolla el LoginComponent con métodos render, handleIniciarSesion y handleRegistrarse, incluyendo validaciones.
+
+Implementa el CuentaComponent con funcionalidades para mostrar saldo, ingresar dinero, transferir y ver movimientos.
+
+Desarrolla el TransferenciaComponent con campos para email destino y monto, y su respectivo manejo de errores.
+
+Desarrolla el IngresoDineroComponent con formulario para monto y motivo, y funcionalidad para simular ingresos.
+
+Desarrolla el RegistroComponent para alta de usuario nuevo y validaciones en campos de entrada.
+
+Genera un esquema general de navegación entre componentes y su integración con el modelo Fintech.
